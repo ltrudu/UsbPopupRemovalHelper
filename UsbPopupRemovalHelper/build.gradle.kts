@@ -28,6 +28,26 @@ android {
     }
 }
 
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            create<MavenPublication>("release") {
+                // Applies the component for the release build variant.
+                artifact("$buildDir/outputs/aar/${artifactId}-release.aar")
+                // You can then customize attributes of the publication as shown below.
+                groupId = "com.zebra.usbpopupremovalhelper"
+                artifactId = "usbpopupremovalhelper"
+                version = "0.1.1"
+            }
+        }
+        repositories {
+            mavenLocal()
+        }
+    }
+}
+
 dependencies {
 
     implementation("androidx.appcompat:appcompat:1.6.1")
