@@ -1,9 +1,10 @@
 pluginManagement {
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
-        gradlePluginPortal()
-        maven ("https://jitpack.io" )
+        jcenter()
+        maven { url 'https://jitpack.io' }
     }
 }
 dependencyResolutionManagement {
@@ -12,10 +13,10 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter()
-        maven ("https://jitpack.io" )
+        maven { url 'https://jitpack.io' }
     }
 }
 
-rootProject.name = "UsbPopupRemovalHelper"
-include(":UsbPopupRemovalHelper")
- 
+
+include ':UsbPopupRemovalHelper'
+rootProject.name = "UdbPopupRemovalHelper"
