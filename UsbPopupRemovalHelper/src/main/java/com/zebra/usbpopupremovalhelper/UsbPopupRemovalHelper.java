@@ -57,10 +57,11 @@ public class UsbPopupRemovalHelper {
                             "&lt;/cert&gt;&lt;vid vendorid=&quot;" + vendorId +
                             "&quot;&gt;&lt;pid&gt;" +productId +
                             "&lt;/pid&gt;&lt;/vid&gt;&lt;/rule&gt;&lt;/popupsuppress&gt;"+
-                            //"&lt;usbconfig mode=&quot;whitelist&quot;&gt;" +
-                            ////"&lt;class&gt;USB_CLASS_PRINTER&lt;/class&gt;" +
+                            "&lt;usbconfig mode=&quot;whitelist&quot;&gt;" +
+                            "&lt;class&gt;USB_CLASS_PRINTER&lt;/class&gt;" +
                             //"&lt;vid vendorid=&quot;" + vendorId +
-                            //"&quot;&gt;&lt;pid&gt;"+ productId +"&lt;/pid&gt;&lt;/vid&gt;&lt;/usbconfig&gt;"+
+                            //"&quot;&gt;&lt;pid&gt;"+ productId +"&lt;/pid&gt;&lt;/vid&gt;" +
+                            "&lt;/usbconfig&gt;"+
                             "\" />\n" +
                             "  </characteristic>\n"+
                             "</characteristic>";
@@ -117,10 +118,11 @@ public class UsbPopupRemovalHelper {
                             "  <characteristic version=\"11.8\" type=\"UsbMgr\">\n" +
                             "    <parm name=\"HostModePeripherals\" value=\"1\" />\n" +
                             "    <parm name=\"ControlRules\" value=\"&lt;?xml version=&quot;1.0&quot;" +
-                            "encoding=&quot;UTF-8&quot;?&gt;&lt;popupsuppress&gt;&lt;rule&gt;&lt;pkg&gt;"+ strPackageName +
-                            "&lt;/pkg&gt;&lt;cert&gt;" + encoded +
-                            "&lt;/cert&gt;&lt;class&gt;" + deviceClass.toString() +
-                            "&lt;/class&gt;&lt;/rule&gt;&lt;/popupsuppress&gt;&lt;"+
+                            "encoding=&quot;UTF-8&quot;?&gt;" +
+                            //"&lt;popupsuppress&gt;&lt;rule&gt;&lt;pkg&gt;"+ strPackageName +
+                            //"&lt;/pkg&gt;&lt;cert&gt;" + encoded +
+                            //"&lt;/cert&gt;&lt;class&gt;" + deviceClass.toString() +
+                            //"&lt;/class&gt;&lt;/rule&gt;&lt;/popupsuppress&gt;&lt;"+
                             "usbconfig mode=&quot;whitelist&quot;&gt;&lt;class&gt;" + deviceClass.toString() +
                             "&lt;/class&gt;&lt;/usbconfig&gt;\" />\n" +
                             "  </characteristic>"+
