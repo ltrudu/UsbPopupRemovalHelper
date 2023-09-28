@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.text.TextUtils;
 
 import java.util.Base64;
 
@@ -44,7 +45,16 @@ public class UsbPopupRemovalHelper {
 
             // Get the certificate as a base64 string
             String encoded = Base64.getEncoder().encodeToString(rawCert);
+            if(callbackInterface != null)
+            {
+                callbackInterface.onDebugStatus("Unencoded signature: " + encoded);
+            }
 
+            encoded = TextUtils.htmlEncode(encoded);
+            if(callbackInterface != null)
+            {
+                callbackInterface.onDebugStatus("HTML encoded signature: " + encoded);
+            }
             profileData =
                     "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
                             "<characteristic type=\"Profile\">" +
