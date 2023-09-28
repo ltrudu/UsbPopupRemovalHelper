@@ -10,7 +10,7 @@ import java.util.Base64;
 public class UsbPopupRemovalHelper {
     public static Signature apkCertificate = null;
 
-    public static void whitelistDeviceWithIDs(Context context, int vendorId, int productId, IResultCallbacks callbackInterface) {
+    public static void whitelistDeviceWithIDs(Context context, int vendorId, int productId, EDeviceClass deviceClass, IResultCallbacks callbackInterface) {
         String profileName = "UsbMgr-1";
         String profileData = "";
         try {
@@ -52,9 +52,13 @@ public class UsbPopupRemovalHelper {
                             "  <characteristic version=\"11.8\" type=\"UsbMgr\">\n" +
                             "    <parm name=\"HostModePeripherals\" value=\"1\" />\n" +
                             "    <parm name=\"ControlRules\" value=\"&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?" +
-                            "&gt;&lt;popupsuppress&gt;&lt;rule&gt;&lt;pkg&gt;" + strPackageName +
-                            "&lt;/pkg&gt;&lt;cert&gt;" + encoded +
-                            "&lt;/cert&gt;&lt;vid vendorid=&quot;" + vendorId +
+                            "&gt;&lt;popupsuppress&gt;"+
+                            "&lt;rule&gt;"+"" +
+                            "&lt;pkg&gt;" + strPackageName +
+                            "&lt;/pkg&gt;" +
+                            "&lt;cert&gt;" + encoded +
+                            "&lt;/cert&gt;" +
+                            "&lt;vid vendorid=&quot;" + vendorId +
                             "&quot;&gt;&lt;pid&gt;" +productId +
                             "&lt;/pid&gt;&lt;/vid&gt;&lt;/rule&gt;&lt;/popupsuppress&gt;"+
                             "&lt;usbconfig mode=&quot;whitelist&quot;&gt;" +
@@ -65,6 +69,17 @@ public class UsbPopupRemovalHelper {
                             "\" />\n" +
                             "  </characteristic>\n"+
                             "</characteristic>";
+
+
+            profileData = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
+                    "<characteristic type=\"Profile\">" +
+                    "<parm name=\"ProfileName\" value=\"" + profileName + "\"/>" +
+                    "  <characteristic version=\"11.8\" type=\"UsbMgr\">\n" +
+                    "    <parm name=\"HostModePeripherals\" value=\"1\" />\n" +
+                    "    <parm name=\"ControlRules\" value=\"&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;popupsuppress&gt;&lt;rule&gt;&lt;pkg&gt;"+ strPackageName + "&lt;/pkg&gt;&lt;cert&gt;" + encoded + "&lt;/cert&gt;&lt;vid vendorid=&quot;" + vendorId + "&quot;&gt;&lt;pid&gt;" + productId + "&lt;/pid&gt;&lt;/vid&gt;&lt;autoLaunch&gt;false&lt;/autoLaunch&gt;&lt;/rule&gt;&lt;/popupsuppress&gt;&lt;usbconfig mode=&quot;whitelist&quot;&gt;&lt;class&gt;"+ deviceClass.toString() + "&lt;/class&gt;&lt;/usbconfig&gt;\" />\n" +
+                    "  </characteristic>\n" +
+                    "</characteristic>";
+
             ProfileManagerCommand profileManagerCommand = new ProfileManagerCommand(context);
             profileManagerCommand.execute(profileData, profileName, callbackInterface);
             //}
