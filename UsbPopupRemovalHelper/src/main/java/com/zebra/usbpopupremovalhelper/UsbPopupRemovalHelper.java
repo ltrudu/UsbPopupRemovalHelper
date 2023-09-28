@@ -10,7 +10,7 @@ import java.util.Base64;
 public class UsbPopupRemovalHelper {
     public static Signature apkCertificate = null;
 
-    private static void whitelistDeviceWithIDs(Context context, int vendorId, int productId, IResultCallbacks callbackInterface) {
+    public static void whitelistDeviceWithIDs(Context context, int vendorId, int productId, IResultCallbacks callbackInterface) {
         String profileName = "UsbMgr-1";
         String profileData = "";
         try {
@@ -73,7 +73,7 @@ public class UsbPopupRemovalHelper {
         }
     }
 
-    private static void whitelistDeviceWithClass(Context context, EDeviceClass deviceClass, IResultCallbacks callbackInterface) {
+    public static void whitelistDeviceWithClass(Context context, EDeviceClass deviceClass, IResultCallbacks callbackInterface) {
         String profileName = "UsbMgr-1";
         String profileData = "";
         try {
