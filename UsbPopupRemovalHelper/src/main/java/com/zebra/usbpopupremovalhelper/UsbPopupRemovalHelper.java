@@ -56,10 +56,12 @@ public class UsbPopupRemovalHelper {
                             "&lt;/pkg&gt;&lt;cert&gt;" + encoded +
                             "&lt;/cert&gt;&lt;vid vendorid=&quot;" + vendorId +
                             "&quot;&gt;&lt;pid&gt;" +productId +
-                            "&lt;/pid&gt;&lt;/vid&gt;&lt;/rule&gt;&lt;/popupsuppress&gt;&lt;usbconfig mode=&quot;whitelist&quot;&gt;" +
-                            //"&lt;class&gt;USB_CLASS_PRINTER&lt;/class&gt;" +
-                            "&lt;vid vendorid=&quot;" + vendorId +
-                            "&quot;&gt;&lt;pid&gt;"+ productId +"&lt;/pid&gt;&lt;/vid&gt;&lt;/usbconfig&gt;\" />\n" +
+                            "&lt;/pid&gt;&lt;/vid&gt;&lt;/rule&gt;&lt;/popupsuppress&gt;"+
+                            //"&lt;usbconfig mode=&quot;whitelist&quot;&gt;" +
+                            ////"&lt;class&gt;USB_CLASS_PRINTER&lt;/class&gt;" +
+                            //"&lt;vid vendorid=&quot;" + vendorId +
+                            //"&quot;&gt;&lt;pid&gt;"+ productId +"&lt;/pid&gt;&lt;/vid&gt;&lt;/usbconfig&gt;"+
+                            "\" />\n" +
                             "  </characteristic>\n"+
                             "</characteristic>";
             ProfileManagerCommand profileManagerCommand = new ProfileManagerCommand(context);

@@ -11,7 +11,7 @@ abstract class CommandBase {
     /*
     A TAG if we want to log something
      */
-    protected static String TAG = "DIWrapperMX";
+    protected static String TAG = "UsbPRHelper";
 
     /*
     A context to work with intents

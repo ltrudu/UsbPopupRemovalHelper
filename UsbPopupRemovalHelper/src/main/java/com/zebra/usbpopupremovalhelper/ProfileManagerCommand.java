@@ -37,7 +37,7 @@ class ProfileManagerCommand extends CommandBase {
     }
 
     // Membres
-    private String TAG = "DIWrapperMX";
+    private String TAG = "UsbPRHelper";
 
     // Callback interface to get the hand back when the profile has been executed
     private IResultCallbacks idiProfileManagerCommandResult = null;
