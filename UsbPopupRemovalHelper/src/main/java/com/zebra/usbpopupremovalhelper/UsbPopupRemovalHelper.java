@@ -9,9 +9,9 @@ public class UsbPopupRemovalHelper {
     {
         processControlRule(context, controlRuleXMLAlreadyHTMLEncoded, true, iResultCallbacks);
     }
-    public static void processRawControlRuleXML(Context context, String controlRuleXMLAlreadyHTMLEncoded, IResultCallbacks iResultCallbacks)
+    public static void processRawControlRuleXML(Context context, String controlRuleAsRawXML, IResultCallbacks iResultCallbacks)
     {
-        processControlRule(context, controlRuleXMLAlreadyHTMLEncoded, false, iResultCallbacks);
+        processControlRule(context, controlRuleAsRawXML, false, iResultCallbacks);
     }
 
     private static void processControlRule(Context context, String controlRuleXML, boolean isHtmlEncoded, IResultCallbacks iResultCallbacks)
