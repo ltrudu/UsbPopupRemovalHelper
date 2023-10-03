@@ -143,10 +143,16 @@ public class MainActivity extends AppCompatActivity {
                     "<pid>" + device.getProductId() + "</pid></vid>\n" +
                     "</rule>\n" +
                     "<autoLaunch>true</autoLaunch>" +
-                    "</popupsuppress>\n" +
+                    "</popupsuppress>\n"; /* +
                     "<usbconfig mode=\"whitelist\">\n" +
                     "<class>USB_CLASS_PRINTER</class>\n" +
                     "</usbconfig>";//*/
+
+            /*controlRule = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+            "<usbconfig mode=\"whitelist\">\n" +
+                    "<class>USB_CLASS_PRINTER</class>\n" +
+                    "</usbconfig>"; //*/
+
             UsbPopupRemovalHelper.processRawControlRuleXML(this, controlRule, new com.zebra.usbpopupremovalhelper.IResultCallbacks() {
                 @Override
                 public void onSuccess(String message, String ResultXML) {
@@ -156,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onError(String message, String ResultXML) {
-                    logMessages("USBPermission error message: " + message + "\nResultXML: " + ResultXML);
+                    logMessages("USBPermission error message: " + message);
                     logMessages("*******************************************************************************");
                 }
 
