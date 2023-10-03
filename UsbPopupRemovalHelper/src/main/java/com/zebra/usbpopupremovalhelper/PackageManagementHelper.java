@@ -58,9 +58,6 @@ public class PackageManagementHelper {
                 return null;
             }
         }
-        String path = context.getApplicationInfo().sourceDir;
-        final String strPackageName = packageInfo.packageName;
-
         // Use custom signature if it has been set by the user
         Signature sig = apkCertificate;
 

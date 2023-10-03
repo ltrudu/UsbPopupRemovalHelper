@@ -27,6 +27,7 @@ public class UsbPopupRemovalHelper {
             }
 
             if(!isHtmlEncoded) {
+                tmpControlRule = tmpControlRule.replace("\n","").replace("\r","").replace("\r\n","");
                 tmpControlRule = TextUtils.htmlEncode(tmpControlRule);
                 if (iResultCallbacks != null) {
                     iResultCallbacks.onDebugStatus("HTML encoded control rule: " + tmpControlRule);
