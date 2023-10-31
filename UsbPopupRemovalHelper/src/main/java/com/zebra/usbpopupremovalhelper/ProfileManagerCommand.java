@@ -208,6 +208,12 @@ class ProfileManagerCommand extends CommandBase {
         if(mProfileManager == null)
         {
             try {
+                try {
+                    // A13BSP HotFix
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
                 emdkManager.getInstanceAsync(EMDKManager.FEATURE_TYPE.PROFILE, mStatusListener);
             } catch (EMDKException e) {
                 logMessage("Error when trying to retrieve profile manager: " + e.getMessage(), EMessageType.ERROR);
