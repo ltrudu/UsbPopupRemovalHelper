@@ -207,17 +207,22 @@ class ProfileManagerCommand extends CommandBase {
         logMessage("EMDK Manager retrieved.", EMessageType.DEBUG);
         if(mProfileManager == null)
         {
-            try {
-                try {
-                    // A13BSP HotFix
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                emdkManager.getInstanceAsync(EMDKManager.FEATURE_TYPE.PROFILE, mStatusListener);
-            } catch (EMDKException e) {
-                logMessage("Error when trying to retrieve profile manager: " + e.getMessage(), EMessageType.ERROR);
+            // A13BSP HotFix
+            mProfileManager = (ProfileManager) emdkManager.getInstance(EMDKManager.FEATURE_TYPE.PROFILE);
+            if(mProfileManager != null) {
+                bInitializing = false;
+                logMessage("Profile Manager retrieved.", EMessageType.DEBUG);
+                processMXContent();
             }
+            else
+            {
+                logMessage("Error retrieving Profile Manager synchronously", EMessageType.ERROR);
+            }
+            //try {
+            //    emdkManager.getInstanceAsync(EMDKManager.FEATURE_TYPE.PROFILE, mStatusListener);
+            //} catch (EMDKException e) {
+            //    logMessage("Error when trying to retrieve profile manager: " + e.getMessage(), EMessageType.ERROR);
+            //}
         }
         else
         {
